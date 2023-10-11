@@ -35,6 +35,6 @@ docker pull ghcr.io/chovin/test_github_actions:latest
 
 echo "pulled image"
 
-docker-compose -f docker/production/docker-compose.yml up -d
+docker compose -f docker/production/docker-compose.yml up -d
 
 echo "container up"
