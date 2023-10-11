@@ -7,7 +7,7 @@ if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
 fi
 
 # login to github container registry
-echo ${TOKEN} | docker login ghcr.io -u $ --password-stdin
+docker login ghcr.io -u $ -p ${TOKEN}
 
 # TODO: change hardcoded path later
 cd /home/ubuntu/test_github_actions
