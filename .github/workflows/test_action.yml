@@ -102,14 +102,11 @@ jobs:
       - name: Update production
         if: github.event_name != 'pull_request'
         uses: appleboy/ssh-action@v1.0.0
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           host: ${{ secrets.HOSTNAME }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.SSH_PORT }}
           command_timeout: 30m
-          envs: TOKEN
           script: | 
-            /home/ubuntu/test_github_actions/update.sh
+            /home/ubuntu/test_github_actions/update.sh ${{ github.GITHUB_TOKEN }}
