@@ -10,9 +10,9 @@ if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
     TOKEN=$(echo $SSH_ORIGINAL_COMMAND | cut -d' ' -f2)
 fi
 
-echo "===="
+echo "====="
 echo $TOKEN
-echo "===="
+echo "====="
 
 # login to github container registry
 docker login ghcr.io -u $ -p ${TOKEN}

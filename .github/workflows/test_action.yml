@@ -101,7 +101,7 @@ jobs:
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
       - name: Update production
         if: github.event_name != 'pull_request'
-        uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOSTNAME }}
           username: ${{ secrets.USERNAME }}
@@ -109,4 +109,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           command_timeout: 30m
           script: | 
-            /home/ubuntu/test_github_actions/update.sh ${{ github.GITHUB_TOKEN }}
+            /home/ubuntu/test_github_actions/update.sh ${{ secrets.GITHUB_TOKEN }}
