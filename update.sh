@@ -6,9 +6,11 @@ if [ ! -z "$SSH_ORIGINAL_COMMAND" ]; then
     TOKEN=${arr[1]}
 fi
 
+REGISTRY=ghcr.io
+
 # login to github container registry
 # docker login ghcr.io -u $ -p ${TOKEN}
-echo ${TOKEN} | docker login ghcr.io -u $ --password-stdin
+echo ${TOKEN} | docker login $REGISTRY -u $ --password-stdin
 
 # TODO: change hardcoded path later
 cd /home/ubuntu/test_github_actions
@@ -23,9 +25,9 @@ git pull
 # docker rmi ghcr.io/tropicode-guam/blue-guam-frontend:latest
 
 # download docker image
-docker pull ghcr.io/chovin/test_github_actions:latest
+docker pull ${REGISTRY}/chovin/test_github_actions:latest
 
 # remove token from docker config
-docker logout
+docker logout $REGISTRY
 
 docker compose -f docker/production/docker-compose.yml up -d
