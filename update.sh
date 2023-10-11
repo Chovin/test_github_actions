@@ -20,6 +20,7 @@ docker login ghcr.io -u $ -p ${TOKEN}
 # TODO: change hardcoded path later
 cd /home/ubuntu/test_github_actions
 
+
 # update source just cause
 git pull
 
