@@ -1,19 +1,10 @@
 # default to command line input
-
-echo "===="
-echo $SSH_ORIGINAL_COMMAND
-echo "===="
-
 TOKEN=$1
 if [ ! -z "$SSH_ORIGINAL_COMMAND" ]; then
     # split on space
     arr=($SSH_ORIGINAL_COMMAND)
     TOKEN=${arr[1]}
 fi
-
-echo "===="
-echo $TOKEN
-echo "===="
 
 # login to github container registry
 # docker login ghcr.io -u $ -p ${TOKEN}
@@ -33,5 +24,8 @@ git pull
 
 # download docker image
 docker pull ghcr.io/chovin/test_github_actions:latest
+
+# remove token from docker config
+python3 -c "import json;d=json.load(open('.docker/config.json'));del d['auths']['ghcr.io'];open('.docker/config.json','w').write(json.dumps(d, indent=4))"
 
 docker compose -f docker/production/docker-compose.yml up -d
