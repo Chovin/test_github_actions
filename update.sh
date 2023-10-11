@@ -27,7 +27,7 @@ git pull
 # download docker image
 docker pull ${REGISTRY}/chovin/test_github_actions:latest
 
+docker compose -f docker/production/docker-compose.yml up -d
+
 # remove token from docker config
 docker logout $REGISTRY
-
-docker compose -f docker/production/docker-compose.yml up -d
