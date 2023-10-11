@@ -16,7 +16,8 @@ echo $TOKEN
 echo "===="
 
 # login to github container registry
-docker login ghcr.io -u $ -p ${TOKEN}
+# docker login ghcr.io -u $ -p ${TOKEN}
+echo ${TOKEN} | docker login ghcr.io -u $ --password-stdin
 
 # TODO: change hardcoded path later
 cd /home/ubuntu/test_github_actions
