@@ -1,4 +1,9 @@
 # default to command line input
+
+echo "===="
+echo $SSH_ORIGINAL_COMMAND
+echo "===="
+
 TOKEN=$1
 if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
     # split on space
