@@ -5,21 +5,21 @@ echo $SSH_ORIGINAL_COMMAND
 echo "===="
 
 TOKEN=$1
-if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
+if [ ! -z "$SSH_ORIGINAL_COMMAND" ]; then
     # split on space
-    TOKEN=$(echo $SSH_ORIGINAL_COMMAND | cut -d' ' -f2)
+    arr=($SSH_ORIGINAL_COMMAND)
+    TOKEN=${arr[1]}
 fi
 
-echo "====="
+echo "===="
 echo $TOKEN
-echo "====="
+echo "===="
 
 # login to github container registry
 docker login ghcr.io -u $ -p ${TOKEN}
 
 # TODO: change hardcoded path later
 cd /home/ubuntu/test_github_actions
-
 
 # update source just cause
 git pull
