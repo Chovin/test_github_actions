@@ -1,16 +1,15 @@
 # default to command line input
 
+TOKEN=$1
+if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
+    # split on space
+    arr=($SSH_ORIGINAL_COMMAND)
+    TOKEN=${arr[1]}
+fi
+
 echo "===="
 echo $TOKEN
 echo "===="
-
-# TOKEN=$1
-# if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
-#     # split on space
-#     arr=($SSH_ORIGINAL_COMMAND)
-#     TOKEN=${arr[1]}
-# fi
-
 
 # login to github container registry
 docker login ghcr.io -u $ -p ${TOKEN}

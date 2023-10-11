@@ -112,4 +112,4 @@ jobs:
           command_timeout: 30m
           allenvs: true
           script: | 
-            /home/ubuntu/test_github_actions/update.sh
+            /home/ubuntu/test_github_actions/update.sh $TOKEN
