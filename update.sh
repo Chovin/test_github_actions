@@ -26,6 +26,6 @@ git pull
 docker pull ghcr.io/chovin/test_github_actions:latest
 
 # remove token from docker config
-python3 -c "import json,pathlib;cf=pathlib.Path.home() / '.docker' / 'config.json';d=json.load(open(cf));del d['auths']['ghcr.io'];open(cf,'w').write(json.dumps(d, indent=4))"
+docker logout
 
 docker compose -f docker/production/docker-compose.yml up -d
