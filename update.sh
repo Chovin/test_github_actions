@@ -8,6 +8,11 @@ fi
 
 REGISTRY=ghcr.io
 
+echo ""
+echo "----------------------------"
+echo $(date)
+echo "----------------------------"
+
 # login to github container registry
 # docker login ghcr.io -u $ -p ${TOKEN}
 echo ${TOKEN} | docker login $REGISTRY -u $ --password-stdin
@@ -31,3 +36,8 @@ docker compose -f docker/production/docker-compose.yml up -d
 
 # remove token from docker config
 docker logout $REGISTRY
+
+docker images ghcr.io/chovin/test_github_actions:latest
+echo "docker pulled"
+echo "should be at git commit:
+git log -n1
