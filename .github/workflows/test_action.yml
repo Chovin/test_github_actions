@@ -110,4 +110,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           command_timeout: 30m
           script: | 
-            ${PRODUCTION_REPO_PATH}/update.sh ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }} ${{ env.REPO_LC }}
+            ${{ github.workflow.PRODUCTION_REPO_PATH }}/update.sh ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }} ${{ env.REPO_LC }}
