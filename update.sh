@@ -39,5 +39,5 @@ docker logout $REGISTRY
 
 docker images ghcr.io/chovin/test_github_actions:latest
 echo "docker pulled"
-echo "should be at git commit:
+echo "should be at git commit:"
 git log -n1
