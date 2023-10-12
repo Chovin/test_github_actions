@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: ghcr.io/chovin/test_github_actions:latest
+    image: ghcr.io/chovin/test_github_actions:${TAG:-main}
     environment:
       - VIRTUAL_HOST=${HOST}
       - VIRTUAL_PORT=5000
