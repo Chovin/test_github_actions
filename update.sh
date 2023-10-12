@@ -28,11 +28,11 @@ git pull
 # make stop-production
 
 # remove local image
-# docker rmi ghcr.io/tropicode-guam/blue-guam-frontend:latest
+# docker rmi ghcr.io/tropicode-guam/blue-guam-frontend:main
 
 echo ">>> updating image"
 # download docker image
-docker pull ${REGISTRY}/chovin/test_github_actions:latest
+docker pull ${REGISTRY}/chovin/test_github_actions:main
 
 echo ">>> recreating service"
 docker compose -f docker/production/docker-compose.yml up -d
@@ -42,6 +42,6 @@ echo ">>> logging out of $REGISTRY"
 docker logout $REGISTRY
 
 echo ">>> docker pulled"
-docker images ghcr.io/chovin/test_github_actions:latest
+docker images ghcr.io/chovin/test_github_actions:main
 echo ">>> should be at git commit:"
 git log -n1
