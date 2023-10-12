@@ -110,4 +110,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           command_timeout: 30m
           script: | 
-            /home/ubuntu/test_github_actions/update.sh ${{ secrets.GITHUB_TOKEN }}
+            /home/ubuntu/test_github_actions/update.sh ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }} ${{ env.REPO_LC }}
